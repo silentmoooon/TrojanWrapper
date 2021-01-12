@@ -18,8 +18,10 @@ namespace TrojanWrapper
     {
         public event DelReadStdOutput ReadStdOutput;
         public event DelReadErrOutput ReadErrOutput;
+        public static string globalProxy = "127.0.0.1:8087";
 
-        
+
+
         public Form1()
         {
             InitializeComponent();
@@ -52,6 +54,9 @@ namespace TrojanWrapper
             }
 
             System.IO.Directory.SetCurrentDirectory(Application.StartupPath);
+            
+            ProxySetting.SetProxy(globalProxy);
+            isProxy.Checked = true;
             // MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
             //  MessageBox.Show(Application.StartupPath);
             Process cmdProcess = new Process();
@@ -73,7 +78,7 @@ namespace TrojanWrapper
             cmdProcess.Start();
             cmdProcess.BeginOutputReadLine();
             cmdProcess.BeginErrorReadLine();
-
+            
          
 
         }
@@ -136,6 +141,7 @@ namespace TrojanWrapper
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ProxySetting.UnsetProxy();
             Kill();
         }
 
@@ -152,6 +158,20 @@ namespace TrojanWrapper
             }
 
 
+        }
+
+        private void isProxy_Click(object sender, EventArgs e)
+        {
+            if (isProxy.Checked)
+            {
+                isProxy.Checked = false;
+                ProxySetting.UnsetProxy();
+            }
+            else
+            {
+                isProxy.Checked = true;
+                ProxySetting.SetProxy(globalProxy);
+            }
         }
     }
 }

@@ -34,6 +34,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.autoStratupMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.isProxy = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,23 +50,31 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.autoStratupMenu,
+            this.isProxy,
             this.退出ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(124, 52);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(211, 104);
             // 
             // autoStratupMenu
             // 
             this.autoStratupMenu.Name = "autoStratupMenu";
-            this.autoStratupMenu.Size = new System.Drawing.Size(123, 24);
+            this.autoStratupMenu.Size = new System.Drawing.Size(210, 24);
             this.autoStratupMenu.Text = "自启动";
             this.autoStratupMenu.Click += new System.EventHandler(this.autoStratupMenu_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(123, 24);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            // 
+            // isProxy
+            // 
+            this.isProxy.Name = "isProxy";
+            this.isProxy.Size = new System.Drawing.Size(210, 24);
+            this.isProxy.Text = "代理";
+            this.isProxy.Click += new System.EventHandler(this.isProxy_Click);
             // 
             // Form1
             // 
@@ -90,6 +99,7 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem autoStratupMenu;
+        private System.Windows.Forms.ToolStripMenuItem isProxy;
     }
 }
 
