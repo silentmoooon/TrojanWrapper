@@ -55,7 +55,7 @@ namespace TrojanWrapper
             // MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
             //  MessageBox.Show(Application.StartupPath);
             Process cmdProcess = new Process();
-            cmdProcess.StartInfo.FileName = "trojan.exe";      // 命令
+            cmdProcess.StartInfo.FileName = "trojan-go.exe";      // 命令
 
             cmdProcess.StartInfo.CreateNoWindow = true;         // 不创建新窗口
             cmdProcess.StartInfo.UseShellExecute = false;
@@ -74,20 +74,7 @@ namespace TrojanWrapper
             cmdProcess.BeginOutputReadLine();
             cmdProcess.BeginErrorReadLine();
 
-            Process privoxyProcess = new Process
-            {
-                // Configure the process using the StartInfo properties.
-                StartInfo =
-                    {
-                        FileName = "privoxy.exe",
-                        Arguments = "config.txt",
-                      
-                        WindowStyle = ProcessWindowStyle.Hidden,
-                        UseShellExecute = true,
-                        CreateNoWindow = true
-                    }
-            };
-            privoxyProcess.Start();
+         
 
         }
 
@@ -155,7 +142,7 @@ namespace TrojanWrapper
         private void Kill()
         {
             
-            string[] names = new string[] { "trojan", "privoxy" };
+            string[] names = new string[] { "trojan-go"};
             
             var pro = Process.GetProcesses().Where(p=>names.Contains(p.ProcessName.ToLower()));
 
