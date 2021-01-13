@@ -45,7 +45,7 @@ namespace TrojanWrapper
             string exeName = Process.GetCurrentProcess().MainModule.ModuleName;
             var value = reg.GetValue(exeName);
             if (value != null)
-            {   
+            {
                 autoStratupMenu.Checked = true;
                 if (!value.ToString().Equals(exePath))
                 {
@@ -54,11 +54,15 @@ namespace TrojanWrapper
             }
 
             System.IO.Directory.SetCurrentDirectory(Application.StartupPath);
-            
+
             ProxySetting.SetProxy(globalProxy);
             isProxy.Checked = true;
-            // MessageBox.Show(System.IO.Directory.GetCurrentDirectory());
-            //  MessageBox.Show(Application.StartupPath);
+            Start();
+
+        }
+
+        private void Start()
+        {
             Process cmdProcess = new Process();
             cmdProcess.StartInfo.FileName = "trojan-go.exe";      // 命令
 
@@ -78,9 +82,6 @@ namespace TrojanWrapper
             cmdProcess.Start();
             cmdProcess.BeginOutputReadLine();
             cmdProcess.BeginErrorReadLine();
-            
-         
-
         }
 
         private void p_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -172,6 +173,15 @@ namespace TrojanWrapper
                 isProxy.Checked = true;
                 ProxySetting.SetProxy(globalProxy);
             }
+        }
+
+        private void 刷新ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            isProxy.Checked = true;
+            ProxySetting.SetProxy(globalProxy);
+            Kill();
+            Start();
+
         }
     }
 }
